@@ -8,7 +8,7 @@ use PHPCR\NodeInterface;
 abstract class BaseBench implements BenchCase
 {
     const ROOT_NAME = 'bench';
-    const ROOT_PATH = '/' . self::ROOT_NAME;
+    const ROOT_PATH = '/bench';
 
     private $session;
     private $loader;
