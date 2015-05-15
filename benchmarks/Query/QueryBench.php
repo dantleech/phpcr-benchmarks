@@ -2,10 +2,11 @@
 
 namespace PHPCR\Benchmark\Query;
 
-use PhpBench\BenchIteration;
 use PHPCR\Benchmark\BaseBench;
+use PhpBench\Benchmark;
+use PhpBench\Benchmark\Iteration;
 
-class QueryBench extends BaseBench
+class QueryBench extends BaseBench implements Benchmark
 {
     /**
      * @description Run a select query
@@ -14,7 +15,7 @@ class QueryBench extends BaseBench
      * @beforeMethod beforeCreateNodes
      * @iterations 1
      */
-    public function benchQuery(BenchIteration $iteration)
+    public function benchQuery(Iteration $iteration)
     {
         $query = $this->getQueryManager()->createQuery($iteration->getParameter('query'), 'JCR-SQL2');
         $query->execute();
@@ -27,7 +28,7 @@ class QueryBench extends BaseBench
      * @beforeMethod beforeCreateNodes
      * @iterations 1
      */
-    public function benchQueryAndIterate(BenchIteration $iteration)
+    public function benchQueryAndIterate(Iteration $iteration)
     {
         $query = $this->getQueryManager()->createQuery($iteration->getParameter('query'), 'JCR-SQL2');
         $result = $query->execute();
@@ -44,7 +45,7 @@ class QueryBench extends BaseBench
      * @beforeMethod beforeCreateNodes
      * @iterations 2
      */
-    public function benchQueryAndIterateWithNode(BenchIteration $iteration)
+    public function benchQueryAndIterateWithNode(Iteration $iteration)
     {
         $query = $this->getQueryManager()->createQuery($iteration->getParameter('query'), 'JCR-SQL2');
         $result = $query->execute();
@@ -111,7 +112,7 @@ class QueryBench extends BaseBench
         }
     }
 
-    public function beforeCreateNodes(BenchIteration $iteration)
+    public function beforeCreateNodes(Iteration $iteration)
     {
         // do not recreate nodes in the same iteration set
         if ($iteration->getIndex() > 0) {
@@ -134,7 +135,7 @@ class QueryBench extends BaseBench
         $this->getSession()->save();
     }
 
-    public function beforeAppendNode(BenchIteration $iteration)
+    public function beforeAppendNode(Iteration $iteration)
     {
         // do not recreate nodes in the same iteration set
         if ($iteration->getIndex() > 0) {

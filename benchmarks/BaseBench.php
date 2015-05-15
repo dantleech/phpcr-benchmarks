@@ -5,7 +5,7 @@ namespace PHPCR\Benchmark;
 use PhpBench\BenchCase;
 use PHPCR\NodeInterface;
 
-abstract class BaseBench implements BenchCase
+abstract class BaseBench
 {
     const ROOT_NAME = 'bench';
     const ROOT_PATH = '/bench';

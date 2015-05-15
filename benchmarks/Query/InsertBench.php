@@ -2,10 +2,11 @@
 
 namespace PHPCR\Benchmark\Query;
 
-use PhpBench\BenchIteration;
 use PHPCR\Benchmark\BaseBench;
+use PhpBench\Benchmark;
+use PhpBench\Benchmark\Iteration;
 
-class InsertBench extends BaseBench
+class InsertBench extends BaseBench implements Benchmark
 {
     /**
      * @description Insert nodes
@@ -13,7 +14,7 @@ class InsertBench extends BaseBench
      * @beforeMethod beforeResetWorkspace
      * @iterations 2
      */
-    public function benchInsertNodes(BenchIteration $iteration)
+    public function benchInsertNodes(Iteration $iteration)
     {
         $this->createNodes($this->getRootNode(), $iteration->getParameter('nb_nodes'), array(
             'string' => 'Hello',
