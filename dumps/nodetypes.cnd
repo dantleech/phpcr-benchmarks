@@ -1,0 +1,10 @@
+<phpcrbench = 'https://phpcr.github.io/phpcrbench'>
+
+[phpcrbench:mixpage] > nt:unstructured
+mixin
+
+[phpcrbench:mixentity] > nt:unstructured
+mixin
+
+[phpcrbench:mixroute] > nt:unstructured
+mixin

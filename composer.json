@@ -10,7 +10,6 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "phpcr/phpcr-implementation": "~2.1",
         "dantleech/phpbench": "~1.0"
     },
     "autoload": {
