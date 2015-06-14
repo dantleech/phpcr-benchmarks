@@ -6,6 +6,10 @@ use PhpBench\Benchmark;
 use PhpBench\Benchmark\Iteration;
 use PHPCR\Benchmark\BaseBench;
 
+/**
+ * @group insert
+ * @processIsolation iteration
+ */
 class InsertBench extends BaseBench
 {
     /**
@@ -21,7 +25,7 @@ class InsertBench extends BaseBench
             'number' => 10,
             'hello' => 'goodbye',
             'goodbye' => 'hello',
-        ), $iteration->getParameter('sections'), 0);
+        ), 0);
 
         $this->getSession()->save();
     }
@@ -36,19 +40,15 @@ class InsertBench extends BaseBench
         return array(
             array(
                 'nb_nodes' => 1,
-                'sections' => 1,
             ),
             array(
                 'nb_nodes' => 10,
-                'sections' => 1,
             ),
             array(
                 'nb_nodes' => 100,
-                'sections' => 1,
             ),
             array(
                 'nb_nodes' => 1000,
-                'sections' => 1,
             ),
         );
     }

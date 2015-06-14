@@ -7,7 +7,7 @@ Benchmarking suite for PHPCR which uses the same bootstrapping process as the
 Usage
 -----
 
-Ensure that the PHPCR-API tests are working.
+The benchmarking suite uses the existing `phpunit.xml` configuration. Ensure that the PHPCR-API tests are working.
 
 Include as a dev requirement:
 
@@ -18,23 +18,7 @@ $ composer require "phpcr/phpcr-benchmarks"
 Run:
 
 ````bash
-$ ./vendor/bin/phpbench ./vendor/phpcr/phpcr-benchmarks/benchmarks
+$ ./vendor/bin/phpbench run --config=vendor/phpcr/phpcr-benchmarks/config/phpbench
 ````
 
-With detailed report:
-
-````bash
-$ ./vendor/bin/phpbench ./vendor/phpcr/phpcr-benchmarks/benchmarks \
-    --report={"name": "console_table", "memory": true}
-````
-
-With a filter:
-
-````bash
-$ ./vendor/bin/phpbench ./vendor/phpcr/phpcr-benchmarks/benchmarks \
-    --report=console_table
-    --filter=benchInsert
-````
-
-For more information see the documentation for [PHPBench](https://github.com/dantleech/phpbench).
-
+For more information see the documentation for [PHPBench](https://github.com/phpbench/phpbench).

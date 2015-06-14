@@ -71,20 +71,14 @@ abstract class BaseBench implements Benchmark
         return $this->getSession()->getWorkspace();
     }
 
-    protected function createNodes(NodeInterface $parentNode, $number, $properties = array(), $sections = 1, $offset = 0)
+    protected function createNodes(NodeInterface $parentNode, $number, $properties = array(), $offset = 0)
     {
         $number = $number + $offset;
-        for ($section = 0; $section < $sections; $section++) {
-            if (!$parentNode->hasNode('section-' . $section)) {
-                $sectionNode = $parentNode->addNode('section-' . $section);
-            } else {
-                $sectionNode = $parentNode->getNode('section-' . $section);
-            }
-            for ($i = $offset; $i < $number; $i++) {
-                $node = $sectionNode->addNode('node-' . $i);
-                foreach ($properties as $property => $value) {
-                    $node->setProperty($property, $value);
-                }
+
+        for ($i = $offset; $i < $number; $i++) {
+            $node = $parentNode->addNode('node-' . $i);
+            foreach ($properties as $property => $value) {
+                $node->setProperty($property, $value);
             }
         }
     }
