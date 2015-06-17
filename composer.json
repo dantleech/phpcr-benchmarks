@@ -10,7 +10,7 @@
     ],
     "minimum-stability": "dev",
     "require": {
-        "phpbench/phpbench": "~1.0"
+        "phpbench/phpbench": "~0.3.0"
     },
     "autoload": {
         "psr-4": {

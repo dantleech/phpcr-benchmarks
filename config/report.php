@@ -1,13 +1,16 @@
 <?php
 
+$runCols = array('iters', 'params', 'mean_time', 'mean_memory_diff', 'mean_rps', 'variance_time', 'deviation_min');
+$subjectCols = array('iters', 'description', 'mean_time', 'mean_memory_diff', 'mean_rps', 'variance_time', 'deviation_min');
+
 $config->addReport(array(
     'title' => 'Inserting Nodes',
     'description' => 'Insert nodes into the repository as children of a single parent',
     'name' => 'console_table',
     'groups' => array('insert'),
     'aggregate' => 'run',
-    'cols' => array('iters', 'params', 'mean_time', 'mean_memory_diff', 'mean_rps', 'deviation_min'),
-    'sort' => 'time',
+    'cols' => $runCols,
+    'sort' => array('time'),
 ));
 
 $config->addReport(array(
@@ -21,8 +24,8 @@ EOT
     'name' => 'console_table',
     'groups' => array('query_single_prop'),
     'aggregate' => 'subject',
-    'cols' => array('iters', 'description', 'variance_time', 'mean_time', 'mean_memory_diff', 'mean_rps', 'deviation_min'),
-    'sort' => 'time',
+    'cols' => $subjectCols,
+    'sort' => array('time'),
 ));
 
 $config->addReport(array(
@@ -37,7 +40,7 @@ EOT
     'groups' => array('query_variable_props'),
     'aggregate' => 'run',
     'subject_meta' => false,
-    'cols' => array('params', 'iters', 'mean_time', 'variance_time', 'mean_rps', 'deviation_min'),
+    'cols' => $runCols,
 ));
 
 $config->addReport(array(
@@ -48,5 +51,5 @@ EOT
     ,
     'name' => 'console_table',
     'groups' => array('traversal_full'),
-    'cols' => array('pid', 'iter', 'time', 'rps', 'memory', 'deviation_mean'),
+    'cols' => array('pid', 'iter', 'time', 'rps', 'memory_diff', 'deviation_mean'),
 ));
