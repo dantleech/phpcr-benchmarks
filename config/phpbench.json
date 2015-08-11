@@ -12,7 +12,8 @@
             "extends": "aggregate",
             "title": "Query, selecting one property",
             "description": "Execute a SELECT query, selecting a single property: SELECT someprop FROM [nt:unstructured]",
-            "params": {"selector": "//subject[group[@name='query_single_prop']]" }
+            "params": {"selector": "//subject[group[@name='query_single_prop']]" },
+            "exclude": ["params", "group"]
         },
         "query_variable_props": {
             "extends": "aggregate",
@@ -24,6 +25,10 @@
             "extends": "aggregate",
             "title": "Full Tree Traversal",
             "params": {"selector": "//subject[group[@name='traversal_full']]//variant" }
+        },
+        "all": {
+            "generator": "composite",
+            "reports": ["insert", "query_select_one", "query_variable_props", "full_tree_traversal"]
         }
     }
 }
