@@ -3,10 +3,10 @@
 namespace PHPCR\Benchmark;
 
 use PHPCR\NodeInterface;
-use PhpBench\Benchmark;
+use PhpBench\BenchmarkInterface;
 use PHPCR\ImportUUIDBehaviorInterface;
 
-abstract class BaseBench implements Benchmark
+abstract class BaseBench implements BenchmarkInterface
 {
     const ROOT_NAME = 'bench';
     const ROOT_PATH = '/bench';

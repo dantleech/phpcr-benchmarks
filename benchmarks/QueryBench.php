@@ -7,7 +7,6 @@ use PHPCR\Benchmark\BaseBench;
 
 /**
  * @group query
- * @processIsolation iteration
  */
 class QueryBench extends BaseBench
 {
@@ -17,7 +16,6 @@ class QueryBench extends BaseBench
     }
 
     /**
-     * @description No iterations
      * @paramProvider provideQueries
      * @iterations 5
      * @group query_single_prop
@@ -29,7 +27,6 @@ class QueryBench extends BaseBench
     }
 
     /**
-     * @description Retrive nodes for each row
      * @paramProvider provideQueries
      * @iterations 5
      * @group query_single_prop
@@ -45,7 +42,6 @@ class QueryBench extends BaseBench
     }
 
     /**
-     * @description Iterate over rows and retrieve properties
      * @paramProvider provideQueries
      * @iterations 5
      * @group query_single_prop
@@ -61,7 +57,6 @@ class QueryBench extends BaseBench
     }
 
     /**
-     * @description Run a select query with variable amount of properties
      * @paramProvider provideProperties
      * @iterations 5
      * @group query_variable_props

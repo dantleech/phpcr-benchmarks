@@ -4,9 +4,6 @@ namespace PHPCR\Benchmark;
 
 use PHPCR\NodeInterface;
 
-/**
- * @processIsolation iteration
- */
 class TraversalBench extends BaseBench
 {
     public function setUp()
@@ -15,7 +12,6 @@ class TraversalBench extends BaseBench
     }
 
     /**
-     * @description Full traversal
      * @group traversal_full
      * @iterations 3
      */
@@ -25,7 +21,6 @@ class TraversalBench extends BaseBench
     }
 
     /**
-     * @description Full traversal and read all properties
      * @group traversal_full
      * @iterations 3
      */

@@ -1,0 +1,11 @@
+{
+    "bootstrap": "./bootstrap.php",
+    "path": "../benchmarks",
+    "reports": "{
+        "insert": {
+            "extends": "aggregate",
+            "title": "Inserting Nodes",
+            "description": "Insert nodes into the repository as children of a single parent"
+        }
+    }
+}

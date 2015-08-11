@@ -8,12 +8,10 @@ use PHPCR\Benchmark\BaseBench;
 
 /**
  * @group insert
- * @processIsolation iteration
  */
 class InsertBench extends BaseBench
 {
     /**
-     * @description Insert nodes
      * @paramProvider provideNbNodes
      * @beforeMethod beforeResetWorkspace
      * @iterations 2
