@@ -8,22 +8,26 @@ use PHPCR\Benchmark\BaseBench;
 
 /**
  * @group insert
+ * @iterations 4
+ * @revs 4
  */
 class InsertBench extends BaseBench
 {
+    private $index = 1;
+
     /**
      * @paramProvider provideNbNodes
      * @beforeMethod beforeResetWorkspace
-     * @iterations 2
      */
-    public function benchInsertNodes(Iteration $iteration)
+    public function benchInsertNodes($params)
     {
-        $this->createNodes($this->getRootNode(), $iteration->getParameter('nb_nodes'), array(
+        $this->createNodes($this->getRootNode(), $params['nb_nodes'], array(
             'string' => 'Hello',
             'number' => 10,
             'hello' => 'goodbye',
             'goodbye' => 'hello',
-        ), 0);
+        ), $this->index * $params['nb_nodes']);
+        $this->index++;
 
         $this->getSession()->save();
     }

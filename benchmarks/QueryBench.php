@@ -20,9 +20,9 @@ class QueryBench extends BaseBench
      * @iterations 5
      * @group query_single_prop
      */
-    public function benchQuery(Iteration $iteration)
+    public function benchQuery($params)
     {
-        $query = $this->getQueryManager()->createQuery($iteration->getParameter('query'), 'JCR-SQL2');
+        $query = $this->getQueryManager()->createQuery($params['query'], 'JCR-SQL2');
         $query->execute();
     }
 
@@ -31,9 +31,9 @@ class QueryBench extends BaseBench
      * @iterations 5
      * @group query_single_prop
      */
-    public function benchQueryWithNodes(Iteration $iteration)
+    public function benchQueryWithNodes($params)
     {
-        $query = $this->getQueryManager()->createQuery($iteration->getParameter('query'), 'JCR-SQL2');
+        $query = $this->getQueryManager()->createQuery($params['query'], 'JCR-SQL2');
         $results = $query->execute();
 
         foreach ($results as $result) {
@@ -46,9 +46,9 @@ class QueryBench extends BaseBench
      * @iterations 5
      * @group query_single_prop
      */
-    public function benchQueryIterate(Iteration $iteration)
+    public function benchQueryIterate($params)
     {
-        $query = $this->getQueryManager()->createQuery($iteration->getParameter('query'), 'JCR-SQL2');
+        $query = $this->getQueryManager()->createQuery($params['query'], 'JCR-SQL2');
         $results = $query->execute();
 
         foreach ($results as $result) {
@@ -61,9 +61,9 @@ class QueryBench extends BaseBench
      * @iterations 5
      * @group query_variable_props
      */
-    public function benchQueryIterateVariableProperties(Iteration $iteration)
+    public function benchQueryIterateVariableProperties($params)
     {
-        $props = $iteration->getParameter('props');
+        $props = $params['props'];
         $query = $this->getQueryManager()->createQuery(sprintf(
             'SELECT %s FROM [nt:unstructured] WHERE valves IS NOT NULL'
         , implode(', ', $props)), 'JCR-SQL2');
