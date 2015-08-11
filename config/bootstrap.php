@@ -22,10 +22,3 @@ foreach ($xpath->query('//php/var') as $globalEl) {
 }
 
 require_once($cwd . '/tests/bootstrap.php');
-
-$config = new PhpBench\Configuration();
-$config->setPath(__DIR__ . '/../benchmarks');
-
-require_once('report.php');
-
-return $config;

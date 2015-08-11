@@ -5,7 +5,8 @@ namespace PHPCR\Benchmark;
 use PHPCR\NodeInterface;
 
 /**
- * @processIsolation iteration
+ * @group traversal_full
+ * @iterations 6
  */
 class TraversalBench extends BaseBench
 {
@@ -14,21 +15,11 @@ class TraversalBench extends BaseBench
         $this->loadDump('large_website.xml');
     }
 
-    /**
-     * @description Full traversal
-     * @group traversal_full
-     * @iterations 3
-     */
     public function benchFullTraversal()
     {
         $this->traverse($this->getSession()->getRootNode());
     }
 
-    /**
-     * @description Full traversal and read all properties
-     * @group traversal_full
-     * @iterations 3
-     */
     public function benchFullTraversalReadProperties()
     {
         $this->traverse($this->getSession()->getRootNode(), true);

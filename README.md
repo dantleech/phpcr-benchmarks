@@ -18,7 +18,7 @@ $ composer require "phpcr/phpcr-benchmarks"
 Run:
 
 ````bash
-$ ./vendor/bin/phpbench run --config=vendor/phpcr/phpcr-benchmarks/config/phpbench
+$ ./vendor/bin/phpbench run --config=vendor/phpcr/phpcr-benchmarks/config/phpbench.json
 ````
 
 For more information see the documentation for [PHPBench](https://github.com/phpbench/phpbench).
