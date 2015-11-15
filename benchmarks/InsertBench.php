@@ -8,8 +8,6 @@ use PHPCR\Benchmark\BaseBench;
 
 /**
  * @Groups({"insert"})
- * @Iterations(4)
- * @Revs(4)
  */
 class InsertBench extends BaseBench
 {
