@@ -7,17 +7,17 @@ use PhpBench\Benchmark\Iteration;
 use PHPCR\Benchmark\BaseBench;
 
 /**
- * @group insert
- * @iterations 4
- * @revs 4
+ * @Groups({"insert"})
+ * @Iterations(4)
+ * @Revs(4)
  */
 class InsertBench extends BaseBench
 {
     private $index = 1;
 
     /**
-     * @paramProvider provideNbNodes
-     * @beforeMethod beforeResetWorkspace
+     * @ParamProviders({"provideNbNodes"})
+     * @BeforeMethods({"beforeResetWorkspace"})
      */
     public function benchInsertNodes($params)
     {

@@ -6,7 +6,8 @@ use PhpBench\Benchmark\Iteration;
 use PHPCR\Benchmark\BaseBench;
 
 /**
- * @group query
+ * @Groups({"query"})
+ * @Iterations(5)
  */
 class QueryBench extends BaseBench
 {
@@ -16,9 +17,8 @@ class QueryBench extends BaseBench
     }
 
     /**
-     * @paramProvider provideQueries
-     * @iterations 5
-     * @group query_single_prop
+     * @Groups({"query_single_prop"}, extend=true)
+     * @ParamProviders({"provideQueries"})
      */
     public function benchQuery($params)
     {
@@ -27,9 +27,8 @@ class QueryBench extends BaseBench
     }
 
     /**
-     * @paramProvider provideQueries
-     * @iterations 5
-     * @group query_single_prop
+     * @Groups({"query_single_prop"}, extend=true)
+     * @ParamProviders({"provideQueries"})
      */
     public function benchQueryWithNodes($params)
     {
@@ -42,9 +41,8 @@ class QueryBench extends BaseBench
     }
 
     /**
-     * @paramProvider provideQueries
-     * @iterations 5
-     * @group query_single_prop
+     * @Groups({"query_single_prop"}, extend=true)
+     * @ParamProviders({"provideQueries"})
      */
     public function benchQueryIterate($params)
     {
@@ -57,9 +55,8 @@ class QueryBench extends BaseBench
     }
 
     /**
-     * @paramProvider provideProperties
-     * @iterations 5
-     * @group query_variable_props
+     * @ParamProviders({"provideProperties"})
+     * @Groups({"query_variable_prop"}, extend=true)
      */
     public function benchQueryIterateVariableProperties($params)
     {

@@ -5,8 +5,8 @@ namespace PHPCR\Benchmark;
 use PHPCR\NodeInterface;
 
 /**
- * @group traversal_full
- * @iterations 6
+ * @Groups({"traversal_full"})
+ * @Iterations(6)
  */
 class TraversalBench extends BaseBench
 {
