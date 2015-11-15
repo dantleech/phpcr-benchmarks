@@ -6,7 +6,7 @@ use PHPCR\NodeInterface;
 use PhpBench\BenchmarkInterface;
 use PHPCR\ImportUUIDBehaviorInterface;
 
-abstract class BaseBench implements BenchmarkInterface
+abstract class BaseBench
 {
     const ROOT_NAME = 'bench';
     const ROOT_PATH = '/bench';
