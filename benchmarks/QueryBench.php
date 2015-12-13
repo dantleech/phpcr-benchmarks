@@ -7,13 +7,13 @@ use PHPCR\Benchmark\BaseBench;
 
 /**
  * @Groups({"query"})
- * @Iterations(5)
+ * @BeforeClassMethods({"beforeClass"})
  */
 class QueryBench extends BaseBench
 {
-    public function setUp()
+    public static function beforeClass()
     {
-        $this->loadDump('large_website.xml');
+        (new self)->loadDump('large_website.xml');
     }
 
     /**

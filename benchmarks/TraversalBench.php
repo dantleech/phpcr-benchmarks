@@ -6,12 +6,12 @@ use PHPCR\NodeInterface;
 
 /**
  * @Groups({"traversal_full"})
- * @Iterations(6)
  */
 class TraversalBench extends BaseBench
 {
     public function setUp()
     {
+
         $this->loadDump('large_website.xml');
     }
 

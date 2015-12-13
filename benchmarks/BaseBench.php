@@ -6,6 +6,11 @@ use PHPCR\NodeInterface;
 use PhpBench\BenchmarkInterface;
 use PHPCR\ImportUUIDBehaviorInterface;
 
+/**
+ * @Iterations(10)
+ * @Revs(10)
+ * @OutputTimeUnit("milliseconds")
+ */
 abstract class BaseBench
 {
     const ROOT_NAME = 'bench';
@@ -88,7 +93,7 @@ abstract class BaseBench
         return $this->rootNode;
     }
 
-    protected function loadDump($filename, $remove = false)
+    public function loadDump($filename, $remove = false)
     {
         $dumpPath = __DIR__ . '/../dumps/' . $filename;
 
