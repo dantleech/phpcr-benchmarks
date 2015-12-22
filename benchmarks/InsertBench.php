@@ -47,9 +47,9 @@ class InsertBench extends BaseBench
             array(
                 'nb_nodes' => 100,
             ),
-            array(
-                'nb_nodes' => 1000,
-            ),
+            //array(
+                //'nb_nodes' => 1000,
+            //),
         );
     }
 }

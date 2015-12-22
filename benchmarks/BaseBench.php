@@ -7,9 +7,10 @@ use PhpBench\BenchmarkInterface;
 use PHPCR\ImportUUIDBehaviorInterface;
 
 /**
- * @Iterations(10)
+ * @Iterations(4)
  * @Revs(10)
- * @OutputTimeUnit("milliseconds")
+ * @OutputTimeUnit("seconds")
+ * @OutputMode("throughput")
  */
 abstract class BaseBench
 {
