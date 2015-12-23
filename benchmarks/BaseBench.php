@@ -8,7 +8,7 @@ use PHPCR\ImportUUIDBehaviorInterface;
 
 /**
  * @Iterations(4)
- * @Revs(10)
+ * @Revs(50)
  * @OutputTimeUnit("seconds")
  * @OutputMode("throughput")
  */

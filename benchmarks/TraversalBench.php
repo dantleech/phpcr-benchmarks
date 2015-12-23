@@ -5,24 +5,24 @@ namespace PHPCR\Benchmark;
 use PHPCR\NodeInterface;
 
 /**
- * @Groups({"traversal_full"})
+ * @Groups({"traversal"})
+ * @BeforeClassMethods({"beforeClass"})
  */
 class TraversalBench extends BaseBench
 {
-    public function setUp()
+    public static function beforeClass()
     {
-
-        $this->loadDump('large_website.xml');
+        (new self)->loadDump('small_website.xml');
     }
 
     public function benchFullTraversal()
     {
-        $this->traverse($this->getSession()->getRootNode());
+        $this->traverse($this->getSession()->getRootNode()->getNode('small_website.xml'));
     }
 
     public function benchFullTraversalReadProperties()
     {
-        $this->traverse($this->getSession()->getRootNode(), true);
+        $this->traverse($this->getSession()->getRootNode()->getNode('small_website.xml'), true);
     }
 
     private function traverse(NodeInterface $node, $readProperties = false)

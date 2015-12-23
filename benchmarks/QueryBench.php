@@ -11,24 +11,43 @@ use PHPCR\Benchmark\BaseBench;
  */
 class QueryBench extends BaseBench
 {
+    private $query;
+
     public static function beforeClass()
     {
         (new self)->loadDump('large_website.xml');
     }
 
-    /**
-     * @Groups({"query_single_prop"}, extend=true)
-     * @ParamProviders({"provideQueries"})
-     */
-    public function benchQuery($params)
+    public function setUp($params)
     {
-        $query = $this->getQueryManager()->createQuery($params['query'], 'JCR-SQL2');
-        $query->execute();
+        $properties = array('valves', 'thistles', 'toppings', 'troikas', 'underrate', 'worksheets');
+        $properties = array_splice($properties, 0, $params['nb_props']);
+
+        if ($params['size'] === 'large') {
+            $clause = '';
+        } else {
+            $clause = ' WHERE valves IS NOT NULL';
+        }
+
+        $this->query = $this->getQueryManager()->createQuery(sprintf(
+            'SELECT %s FROM [nt:unstructured] %s',
+            implode(', ', $properties),
+            $clause
+        ), 'JCR-SQL2');
     }
 
     /**
      * @Groups({"query_single_prop"}, extend=true)
-     * @ParamProviders({"provideQueries"})
+     * @ParamProviders({"provideNbProps", "provideSize"})
+     * @BeforeMethods({"setUp"})
+     */
+    public function benchQuery()
+    {
+        $this->query->execute();
+    }
+
+    /**
+     * @Groups({"query_single_prop"}, extend=true)
      */
     public function benchQueryWithNodes($params)
     {
@@ -42,7 +61,6 @@ class QueryBench extends BaseBench
 
     /**
      * @Groups({"query_single_prop"}, extend=true)
-     * @ParamProviders({"provideQueries"})
      */
     public function benchQueryIterate($params)
     {
@@ -55,7 +73,6 @@ class QueryBench extends BaseBench
     }
 
     /**
-     * @ParamProviders({"provideProperties"})
      * @Groups({"query_variable_prop"}, extend=true)
      */
     public function benchQueryIterateVariableProperties($params)
@@ -74,29 +91,26 @@ class QueryBench extends BaseBench
         }
     }
 
-    public function provideQueries()
+    public function provideNbProps()
     {
         return array(
             array(
-                'query' => 'SELECT valves FROM [nt:unstructured]',
+                'nb_props' => 1,
+            ),
+            array(
+                'nb_props' => 4,
             ),
         );
     }
 
-    public function provideProperties()
+    public function provideSize()
     {
         return array(
             array(
-                'props' => array('valves'),
+                'size' => 'large',
             ),
             array(
-                'props' => array('valves', 'thistles'),
-            ),
-            array(
-                'props' => array('valves', 'thistles', 'toppings', 'troikas'),
-            ),
-            array(
-                'props' => array('valves', 'thistles', 'toppings', 'troikas', 'underrate', 'worksheets'),
+                'size' => 'small',
             ),
         );
     }
